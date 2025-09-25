@@ -1,0 +1,12 @@
+transformers 
+transformers_stream_generator 
+tiktoken 
+transformer_lens 
+einops 
+jaxtyping 
+datasets 
+huggingface_hub
+pandas 
+torch
+numpy
+
