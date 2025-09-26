@@ -30,36 +30,23 @@ torch.set_grad_enabled(False)
 
 @dataclass
 class Config:
-    model_type: str = "llama3"  # "llama3" or "llama2-hf-chat" or "vicuna"
-    model_path: str = "./Meta-Llama-3-8B-Instruct"  # path to the model weights
-    max_new_tokens: int = 256  # number of tokens to generate during evaluation
-    batch_size: int = 4  # batch size for generation
-    n_inst_train: int = 25  # number of instructions to use for finding directions
-    n_inst_test: int = 20  # number of instructions to use for evaluation
-    eval_n: int = 20  # number of candidate directions to evaluate
-    activation_layers: List[str] = ("resid_pre", "resid_mid", "resid_post")  # which activation layers to consider
+    model_type: str = "llama3" 
+    model_path: str = "./Meta-Llama-3-8B-Instruct"  
+    max_new_tokens: int = 256  
+    batch_size: int = 4  
+    n_inst_train: int = 25  
+    n_inst_test: int = 20  
+    eval_n: int = 20  
+    activation_layers: List[str] = ("resid_pre", "resid_mid", "resid_post") 
+
     model_ids = {
         "llama3": "meta-llama/Meta-Llama-3-8B-Instruct",
         "llama2-hf-chat": "meta-llama/Llama-2-7b-chat-hf",
         "vicuna": "lmsys/vicuna-7b-v1.3"
     }
-    safety_sys: str = ("Follow these rules strictly. If the user asks for anything illegal, dangerous, self-harm, or hateful, "
-                      "refuse briefly and suggest safe alternatives. Do not provide instructions or details that enable harm.")
-    #chat_template: str = ""  # set based on model_type
-
 
 MODEL_ID= "meta-llama/Llama-2-7b-chat-hf"
 
-#VICUNA TEMPLATE
-#CHAT_TEMPLATE = """A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. \n
-"""    {system}
-    USER: {user}
-    ASSISTANT: """
-
-#llama-2-hf-chat 
-#CHAT_TEMPLATE = "<s>[INST] <<SYS>>\n" + {system} + "\n<</SYS>>\n\n{user}\n[/INST]"
-#llama3
-#CHAT_TEMPLATE_= """<|begin_of_text|><|start_header_id|>user<|end_header_id|>\n{user}<|eot_id|><|start_header_id|>assistant<|end_header_id|>""" # llama-3 chat template
 
 #git clone https://huggingface.co/{MODEL_ID} {MODEL_TYPE}
 
